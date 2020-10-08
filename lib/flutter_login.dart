@@ -1,28 +1,31 @@
 library flutter_login;
 
 import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:provider/provider.dart';
-import 'src/providers/login_theme.dart';
-import 'src/widgets/null_widget.dart';
-import 'theme.dart';
-import 'src/dart_helper.dart';
+
 import 'src/color_helper.dart';
+import 'src/constants.dart';
+import 'src/dart_helper.dart';
 import 'src/providers/auth.dart';
 import 'src/providers/login_messages.dart';
+import 'src/providers/login_theme.dart';
 import 'src/regex.dart';
 import 'src/widgets/auth_card.dart';
 import 'src/widgets/fade_in.dart';
-import 'src/widgets/hero_text.dart';
 import 'src/widgets/gradient_box.dart';
+import 'src/widgets/hero_text.dart';
+import 'src/widgets/null_widget.dart';
+import 'theme.dart';
+
 export 'src/models/login_data.dart';
 export 'src/providers/login_messages.dart';
 export 'src/providers/login_theme.dart';
-import 'src/constants.dart';
 
 class _AnimationTimeDilationDropdown extends StatelessWidget {
   _AnimationTimeDilationDropdown({
@@ -104,7 +107,7 @@ class __HeaderState extends State<_Header> {
     final renderParagraph = RenderParagraph(
       TextSpan(
         text: widget.title,
-        style: theme.textTheme.display2.copyWith(
+        style: theme.textTheme.headline3.copyWith(
           fontSize: widget.loginTheme.beforeHeroFontSize,
         ),
       ),
@@ -164,14 +167,14 @@ class __HeaderState extends State<_Header> {
         tag: widget.titleTag,
         largeFontSize: widget.loginTheme.beforeHeroFontSize,
         smallFontSize: widget.loginTheme.afterHeroFontSize,
-        style: theme.textTheme.display2,
+        style: theme.textTheme.headline3,
         viewState: ViewState.enlarged,
       );
     } else if (!DartHelper.isNullOrEmpty(widget.title)) {
       title = Text(
         widget.title,
         key: kTitleKey,
-        style: theme.textTheme.display2,
+        style: theme.textTheme.headline3,
       );
     } else {
       title = null;
@@ -430,22 +433,22 @@ class _FlutterLoginState extends State<FlutterLogin>
     final accentColor = loginTheme.accentColor ?? theme.accentColor;
     final errorColor = loginTheme.errorColor ?? theme.errorColor;
     // the background is a dark gradient, force to use white text if detect default black text color
-    final isDefaultBlackText = theme.textTheme.display2.color ==
-        Typography.blackMountainView.display2.color;
-    final titleStyle = theme.textTheme.display2
+    final isDefaultBlackText = theme.textTheme.headline3.color ==
+        Typography.blackMountainView.headline3.color;
+    final titleStyle = theme.textTheme.headline3
         .copyWith(
           color: loginTheme.accentColor ??
               (isDefaultBlackText
                   ? Colors.white
-                  : theme.textTheme.display2.color),
+                  : theme.textTheme.headline3.color),
           fontSize: loginTheme.beforeHeroFontSize,
           fontWeight: FontWeight.w300,
         )
         .merge(loginTheme.titleStyle);
-    final textStyle = theme.textTheme.body1
+    final textStyle = theme.textTheme.bodyText2
         .copyWith(color: Colors.black54)
         .merge(loginTheme.bodyStyle);
-    final textFieldStyle = theme.textTheme.subhead
+    final textFieldStyle = theme.textTheme.subtitle1
         .copyWith(color: Colors.black.withOpacity(.65), fontSize: 14)
         .merge(loginTheme.textFieldStyle);
     final buttonStyle = theme.textTheme.button
@@ -519,9 +522,9 @@ class _FlutterLoginState extends State<FlutterLogin>
       highlightColor:
           loginTheme.buttonTheme.highlightColor ?? theme.highlightColor,
       textTheme: theme.textTheme.copyWith(
-        display2: titleStyle,
-        body1: textStyle,
-        subhead: textFieldStyle,
+        headline3: titleStyle,
+        bodyText2: textStyle,
+        subtitle1: textFieldStyle,
         button: buttonStyle,
       ),
     );

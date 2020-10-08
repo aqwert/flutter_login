@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_login/theme.dart';
 import 'package:flutter_login/widgets.dart';
-import 'transition_route_observer.dart';
-import 'widgets/fade_in.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'constants.dart';
+import 'transition_route_observer.dart';
 import 'widgets/animated_numeric_text.dart';
+import 'widgets/fade_in.dart';
 import 'widgets/round_button.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -150,7 +151,7 @@ class _DashboardScreenState extends State<DashboardScreen>
               children: <Widget>[
                 Text(
                   '\$',
-                  style: theme.textTheme.display2.copyWith(
+                  style: theme.textTheme.headline3.copyWith(
                     fontWeight: FontWeight.w300,
                     color: accentColor.shade400,
                   ),
@@ -161,7 +162,7 @@ class _DashboardScreenState extends State<DashboardScreen>
                   targetValue: 3467.87,
                   curve: Interval(0, .5, curve: Curves.easeOut),
                   controller: _loadingController,
-                  style: theme.textTheme.display2.copyWith(
+                  style: theme.textTheme.headline3.copyWith(
                     foreground: Paint()..shader = linearGradient,
                   ),
                 ),
