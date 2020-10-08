@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
 import 'animated_text.dart';
 import 'ring.dart';
 
@@ -119,8 +120,8 @@ class _AnimatedButtonState extends State<AnimatedButton>
 
   @override
   void dispose() {
-    super.dispose();
     widget.controller.removeStatusListener(handleStatusChanged);
+    super.dispose();
   }
 
   void handleStatusChanged(status) {
@@ -158,7 +159,9 @@ class _AnimatedButtonState extends State<AnimatedButton>
     // button width is min 120.0 and max 240.0
     _width = textWidth > 120.0 && textWidth < 240.0
         ? textWidth
-        : textWidth >= 240.0 ? 240.0 : 120.0;
+        : textWidth >= 240.0
+            ? 240.0
+            : 120.0;
 
     _sizeAnimation = Tween<double>(begin: 1.0, end: _height / _width)
         .animate(CurvedAnimation(
