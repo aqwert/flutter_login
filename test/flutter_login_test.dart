@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'utils.dart';
+
 import '../lib/flutter_login.dart';
 import '../lib/src/constants.dart';
 import '../lib/src/widgets/animated_text.dart';
+import 'utils.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
@@ -33,6 +34,7 @@ void main() {
     clickSubmitButton();
     await tester.pumpAndSettle();
 
+    // ignore: todo
     // TODO: put error messages into variables
     expect(nameTextFieldWidget(tester).decoration.errorText, 'Invalid email!');
 
@@ -705,6 +707,7 @@ void main() {
     addTearDown(() => clearScreenSize());
   });
 
+  // ignore: todo
   // TODO: wait for flutter to add support for testing in web environment on Windows 10
   // https://github.com/flutter/flutter/issues/44583
   // https://github.com/NearHuscarl/flutter_login/issues/7

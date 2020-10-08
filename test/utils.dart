@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+
 import '../lib/flutter_login.dart';
 import '../lib/src/constants.dart';
 import '../lib/src/widgets/animated_button.dart';
 
+// ignore: todo
 // TODO: get this value from fluter_login package
 const loadingAnimationDuration = const Duration(seconds: 1);
 
