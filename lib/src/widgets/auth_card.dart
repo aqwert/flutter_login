@@ -29,6 +29,7 @@ class AuthCard extends StatefulWidget {
     this.passwordValidator,
     this.onSubmit,
     this.onSubmitCompleted,
+    this.loginCardBottomWidget,
   }) : super(key: key);
 
   final EdgeInsets padding;
@@ -37,6 +38,7 @@ class AuthCard extends StatefulWidget {
   final FormFieldValidator<String> passwordValidator;
   final Function onSubmit;
   final Function onSubmitCompleted;
+  final Widget loginCardBottomWidget;
 
   @override
   AuthCardState createState() => AuthCardState();
@@ -295,6 +297,7 @@ class AuthCardState extends State<AuthCard> with TickerProviderStateMixin {
                         widget?.onSubmitCompleted();
                       });
                     },
+                    bottomWidget: widget.loginCardBottomWidget,
                   ),
                 )
               : _RecoverCard(
@@ -335,6 +338,7 @@ class _LoginCard extends StatefulWidget {
     @required this.onSwitchRecoveryPassword,
     this.onSwitchAuth,
     this.onSubmitCompleted,
+    this.bottomWidget,
   }) : super(key: key);
 
   final AnimationController loadingController;
@@ -343,6 +347,7 @@ class _LoginCard extends StatefulWidget {
   final Function onSwitchRecoveryPassword;
   final Function onSwitchAuth;
   final Function onSubmitCompleted;
+  final Widget bottomWidget;
 
   @override
   _LoginCardState createState() => _LoginCardState();
@@ -677,6 +682,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
                 _buildForgotPassword(theme, messages),
                 _buildSubmitButton(theme, messages, auth),
                 _buildSwitchAuthButton(theme, messages, auth),
+                if (widget.bottomWidget != null) widget.bottomWidget,
               ],
             ),
           ),

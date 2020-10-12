@@ -221,7 +221,11 @@ class FlutterLogin extends StatefulWidget {
     this.logoTag,
     this.titleTag,
     this.showDebugButtons = false,
+    this.loginCardBottomWidget,
   }) : super(key: key);
+
+  /// Widget that appears at the bottom of the sign in and sign up panel
+  final Widget loginCardBottomWidget;
 
   /// Called when the user hit the submit button when in sign up mode
   final AuthCallback onSignup;
@@ -584,6 +588,7 @@ class _FlutterLoginState extends State<FlutterLogin>
                         passwordValidator: passwordValidator,
                         onSubmit: _reverseHeaderAnimation,
                         onSubmitCompleted: widget.onSubmitAnimationCompleted,
+                        loginCardBottomWidget: widget.loginCardBottomWidget,
                       ),
                     ),
                     Positioned(
